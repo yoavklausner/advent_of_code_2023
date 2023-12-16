@@ -64,28 +64,22 @@ if __name__ == "__main__":
         RED = "red"
         BLUE = "blue"
         GREEN = "green"
-        RED_MAX = 12
-        GREEN_MAX = 13
-        BLUE_MAX = 14
         for i, line in enumerate(sec_input_file.readlines()):
-            line_number = i+1
-            possible = True
-            sets_str = line.split(':')[1]
-            sets = (sets_str.split(';'))
+            max_red = 1
+            max_green = 1
+            max_blue = 1
+            sets = line.split(':')[1].split(';')
             for cubes_set in sets:
                 current_cubes = cubes_set.split(',')
                 for cube in current_cubes:
-                    amount = re.search(r'\d+', cube).group()
-                    if RED in cube and int(amount) > RED_MAX:
-                        possible = False
-                    elif GREEN in cube and int(amount) > GREEN_MAX:
-                        possible = False
-                    elif BLUE in cube and int(amount) > BLUE_MAX:
-                        possible = False
-                if not possible:
-                    break
-            if possible:
-                id_sum += line_number
+                    amount = int(re.search(r'\d+', cube).group())
+                    if RED in cube and amount > max_red:
+                        max_red = amount
+                    elif GREEN in cube and amount > max_green:
+                        max_green = amount
+                    elif BLUE in cube and amount > max_blue:
+                        max_blue = amount
+            id_sum += max_green * max_blue * max_red
         print(id_sum)
 
 
