@@ -1,4 +1,5 @@
 import re
+import lev4_solution
 
 
 ''' level 1 utils
@@ -139,7 +140,7 @@ if __name__ == "__main__":
             current = first * 10 + last
             sum += current
         print(sum)
-    '''
+    '''     #level 1
     '''     level 2
     with open("lev2_input.txt", 'r') as sec_input_file:
         id_sum = 0
@@ -163,16 +164,13 @@ if __name__ == "__main__":
                         max_blue = amount
             id_sum += max_green * max_blue * max_red
         print(id_sum)
+    '''     #level 2
     '''
     with open("lev3_input.txt", 'r') as third_input_file:
         schema = third_input_file.readlines()
         # print(sum_engine_part_numbers(schema)) ** first part **
         print(sum_gear_ratios(schema))
-    '''
-    pattern = re.compile(r'-*\d+')
-    s = "1723....230583....-30239235*...--2219,..._...39"
-    sum_this = 0
-    for m in re.findall(pattern, s):
-        sum_this += int(m)
-    print(sum_this)
-    '''
+    '''     #level 3
+
+    # level 4
+    lev4_solution.print_lev4_first_part_solution()
